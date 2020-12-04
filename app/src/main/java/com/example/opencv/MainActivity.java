@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     CascadeClassifier faceDetector;
     private Mat mrgba, mgrey;
 
-    TextView mfpsView, rgbView;
+    TextView mfpsView, rgbView, hbView;
     int mFPS;
     long startTime = 0;
     long currentTime = 1000;
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rgbView = findViewById(R.id.rgbview);
+        hbView = findViewById(R.id.hbview);
         javaCameraView = findViewById(R.id.javacamview);
         /* //To check if OpenCV works or not
         if (!OpenCVLoader.initDebug())
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             //shows rgb colour
             double[] rgb = mrgba.get(0, 0);
             changeGreen = (float) Math.abs(changeGreen - rgb[1]);
-            //rgbView.setText("Red: " + rgb[0] + ",Green: " + rgb[1] + ",Blue: " + rgb[2] + ",ChangeGreen: " + changeGreen); // showing RGB Colours
+            rgbView.setText("Red: " + rgb[0] + ",Green: " + rgb[1] + ",Blue: " + rgb[2] + ",ChangeGreen: " + changeGreen); // showing RGB Colours
             Fast((int) changeGreen);
         }
 
@@ -141,8 +142,11 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             m = (int) (Math.log(n) / Math.log(2));
 
         // Make sure n is a power of 2
+        /*
         if (n != (1 << m))
             throw new RuntimeException("FFT length must be power of 2");
+            
+         */
 
         // precompute tables
         cos = new double[n / 2];
@@ -151,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         for (int i = 0; i < n / 2; i++) {
             cos[i] = Math.cos(-2 * Math.PI * i / n);
             sin[i] = Math.sin(-2 * Math.PI * i / n);
-            rgbView.setText("HeartBeat: "+cos[i]);
+            hbView.setText("HeartBeat: "+cos[i]);
         }
 
 
