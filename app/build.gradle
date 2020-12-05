@@ -37,4 +37,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     implementation 'com.quickbirdstudios:opencv:4.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.wendykierp:JTransforms:3.1'
 }
